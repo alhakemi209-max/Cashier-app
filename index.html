@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سهل لإقفال الصناديق</title>
+<meta name="theme-color" content="#01235f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="سهل">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>html,body{margin:0;height:100%;background:#eef2f7;overscroll-behavior:none}body{font-family:Tahoma,Segoe UI,Arial,sans-serif;color:#1d2b3a}#app{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#eef2f7}.cover{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(100deg,#01286d,#011751);color:#fff;text-align:center;padding:24px;box-sizing:border-box;transition:opacity .25s}.cover img{width:132px;height:132px;border-radius:30px;box-shadow:0 10px 30px #00000059}.cover h1{font-size:19px;margin:6px 0 0}.cover p{margin:0;color:#c9d6ee;font-size:14px;line-height:1.8;max-width:320px}.spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.25);border-top-color:#19b55a;border-radius:50%;animation:s .9s linear infinite}@keyframes s{to{transform:rotate(360deg)}}.cover button{font:700 15px Tahoma,Arial,sans-serif;background:#19b55a;color:#fff;border:0;border-radius:12px;padding:12px 26px;cursor:pointer}.hide{opacity:0;pointer-events:none}[hidden]{display:none!important}</style>
+</head>
+<body>
+<iframe id="app" title="سهل لإقفال الصناديق" allow="clipboard-write; clipboard-read; web-share; fullscreen" hidden></iframe>
+<div class="cover" id="splash">
+<img src="icon-192.png" alt="">
+<h1>سهل لإقفال الصناديق</h1>
+<div class="spin" id="spin"></div>
+<p id="msg">جارٍ فتح النظام…</p>
+<button id="retry" hidden>إعادة المحاولة</button>
+</div>
+<script>(function(){var f="app-link",o=document.getElementById("app"),s=document.getElementById("splash"),g=document.getElementById("msg"),m=document.getElementById("spin"),h=document.getElementById("retry"),l="",d=0;function u(){try{return localStorage.getItem(f)||""}catch(e){return""}}function v(e){try{localStorage.setItem(f,e)}catch(t){}}function i(e){return/^https:\/\/script\.google\.com\/(a\/[^\/]+\/)?macros\/s\/[A-Za-z0-9_-]{20,}\/exec$/.test(e)}function n(e,t){s.classList.remove("hide"),m.hidden=!!t||t===null,g.innerHTML=e,h.hidden=!t}function c(e){if(e){if(!navigator.onLine){n("لا يوجد اتصال بالإنترنت.<br>تأكد من الاتصال ثم اضغط إعادة المحاولة.",!0);return}var t=location.search&&/[?&]n=/.test(location.search)?location.search:"";l=e,n("جارٍ فتح النظام…",!1),o.hidden=!1,clearTimeout(d),d=setTimeout(function(){n("الاتصال بطيء، النظام ما زال يُحمَّل…<br>انتظر قليلاً أو اضغط إعادة المحاولة.",!0)},25e3),o.src=e+t}}o.addEventListener("load",function(){o.src&&(clearTimeout(d),s.classList.add("hide"))}),h.addEventListener("click",function(){var e=l||u();i(e)?c(e):location.reload()}),window.addEventListener("online",function(){s.classList.contains("hide")||c(l||u())}),window.addEventListener("offline",function(){n("انقطع الاتصال بالإنترنت.<br>بيرجع النظام تلقائياً أول ما يرجع الاتصال.",null),m.hidden=!1});var r=u();i(r)&&c(r),fetch("link.txt",{cache:"no-store"}).then(function(e){return e.ok?e.text():""}).then(function(e){var t=String(e||"").match(/https:\/\/script\.google\.com\/\S+?\/exec(?=$|[\s"'<>])/),a=t?t[0]:"";if(!i(a)){i(r)||n('لم يُضبط رابط النظام بعد.<br>افتح ملف <b>link.txt</b> في GitHub والصق فيه رابط النظام الذي ينتهي بـ <b dir="ltr">/exec</b>.',null);return}a!==r&&(v(a),c(a))}).catch(function(){i(r)||n("تعذّر الاتصال.<br>تأكد من الإنترنت ثم اضغط إعادة المحاولة.",!0)}),"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})})();</script>
+</body>
+</html>
